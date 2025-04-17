@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./assets/css/logincss.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Login</h1>
+        <form id="registrationForm">
+            <!-- Username -->
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Username" required>
+                <i class='bx bxs-user'></i>
+                <div class="error-message" id="usernameError">Username must be at least 4 characters</div>
+            </div>
+
+
+            <!-- Password -->
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Password" required>
+                <i class='bx bxs-lock-alt'></i>
+                <div class="error-message" id="passwordError">Password must be 8+ characters with uppercase, number & special char</div>
+            </div>
+
+            <div class="remember-forgot">
+                <label><input type="checkbox" > Remember me</label>
+                <a href="#">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn">Login </button>
+            <div class="login-link">
+                <p>Don't have an account? <a href="./Registration.html">Register</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="./assets/script/login.js"></script>
+</html>

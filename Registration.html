@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Registration </title>
+    <link rel="stylesheet" href="./assets/css/logincss.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Register</h1>
+        <form id="registrationForm">
+            <!-- Username -->
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Username" required>
+                <i class='bx bxs-user'></i>
+                <div class="error-message" id="usernameError">Username must be at least 4 characters</div>
+            </div>
+
+            <!-- Email -->
+            <div class="input-group">
+                <input type="email" id="email" placeholder="Email" required>
+                <i class='bx bxs-envelope'></i>
+                <div class="error-message" id="emailError">Please enter a valid email</div>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="input-group">
+                <input type="tel" id="phone" placeholder="Phone Number" required>
+                <i class='bx bxs-phone'></i>
+                <div class="error-message" id="phoneError">Invalid phone number</div>
+            </div>
+
+            <!-- Password -->
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Password" required>
+                <i class='bx bxs-lock-alt'></i>
+                <div class="error-message" id="passwordError">Password must be 8+ characters with uppercase, number & special char</div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="input-group">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                <i class='bx bxs-lock-alt'></i>
+                <div class="error-message" id="confirmPasswordError">Passwords don't match</div>
+            </div>
+
+            <!-- Gender -->
+            <div class="gender-group">
+                <div class="gender-option">
+                    <input type="radio" name="gender" id="male" value="male" required>
+                    <label for="male">Male</label>
+                </div>
+                <div class="gender-option">
+                    <input type="radio" name="gender" id="female" value="female">
+                    <label for="female">Female</label>
+                </div>
+                <div class="gender-option">
+                    <input type="radio" name="gender" id="other" value="other">
+                    <label for="other">Other</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn">Register</button>
+            <div class="login-link">
+                <p>Already have an account? <a href="./index.html">Login</a></p>
+            </div>
+        </form>
+    </div>
+
+   <script src="./assets/script/script.js"></script>
+</body>
+</html>

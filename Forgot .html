@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="./assets/css/logincss.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            position: relative;
+            width: 90%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #fff;
+            font-size: 1.8em;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9em;
+        }
+
+        .input-group {
+            position: relative;
+            width: 100%;
+            margin-bottom: 25px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px 40px 15px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            font-size: 16px;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #b87333;
+            box-shadow: 0 0 10px rgba(184, 115, 51, 0.3);
+        }
+
+        .input-group i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 20px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: #b87333;
+            border: none;
+            border-radius: 30px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #a5672d;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #fff;
+        }
+
+        .back-link a {
+            color: #b87333;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .input-group.error input {
+            border-color: #ff6b6b;
+        }
+
+        .input-group.success input {
+            border-color: #4CAF50;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .input-group input {
+                padding: 12px 35px 12px 15px;
+                font-size: 14px;
+            }
+        }
+    </style> -->
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Forgot Password?</h1>
+            <p>Enter your email to reset your password</p>
+        </div>
+        <form id="forgotPasswordForm">
+            <!-- Email Input -->
+            <div class="input-group">
+                <input type="email" id="email" placeholder="Enter your email">
+                <i class='bx bxs-envelope'></i>
+                <div class="error-message" id="emailError">Please enter a valid email address</div>
+            </div>
+
+            <button type="submit" class="btn">Send Reset Link</button>
+            <div class="back-link">
+                Remember your password? <a href="#">Login here</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('forgotPasswordForm');
+        const emailInput = document.getElementById('email');
+        const emailError = document.getElementById('emailError');
+
+        // Email validation regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // Validate email in real-time
+        emailInput.addEventListener('input', () => {
+            const email = emailInput.value.trim();
+            if (!emailRegex.test(email)) {
+                showError(emailInput, emailError, 'Please enter a valid email address');
+            } else {
+                showSuccess(emailInput);
+            }
+        });
+
+        // Form submission handler
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = emailInput.value.trim();
+
+            if (!emailRegex.test(email)) {
+                showError(emailInput, emailError, 'Please enter a valid email address');
+                return;
+            }
+
+            // Simulate API call
+            showSuccess(emailInput);
+            setTimeout(() => {
+                alert('Password reset link sent to your email!');
+                form.reset();
+                emailInput.parentElement.classList.remove('success');
+            }, 500);
+        });
+
+        // Helper functions
+        function showError(input, errorElement, message) {
+            input.parentElement.classList.add('error');
+            input.parentElement.classList.remove('success');
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        function showSuccess(input) {
+            input.parentElement.classList.remove('error');
+            input.parentElement.classList.add('success');
+            emailError.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
